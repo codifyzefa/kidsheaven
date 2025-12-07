@@ -39,35 +39,48 @@
         }
         html, body {
             height: 100%;
-            overflow: hidden;
+            overflow-y: auto;
+        }
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        body::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        body::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 via-white to-purple-50 h-screen flex items-center justify-center p-4">
-    <div class="max-w-4xl w-full h-full flex flex-col justify-center py-4">
+<body class="bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-4xl w-full py-6">
         <!-- Logo Container -->
         <div class="text-center mb-4 animate-fade-in">
-            <img src="kids.png" alt="School Logo" class="mx-auto h-16 md:h-20 w-auto mb-3 drop-shadow-lg">
+            <img src="kids.png" alt="School Logo" class="mx-auto h-20 md:h-24 w-auto mb-4 drop-shadow-lg">
         </div>
 
         <!-- Main Content Card -->
-        <div class="bg-white rounded-3xl shadow-2xl p-6 md:p-8 animate-fade-in animate-delay-1 flex-shrink-0">
+        <div class="bg-white rounded-3xl shadow-2xl p-6 md:p-8 animate-fade-in animate-delay-1">
             <!-- Coming Soon Badge -->
-            <div class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold mb-4 shadow-lg">
+            <div class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold mb-5 shadow-lg">
                 Coming Soon
             </div>
 
             <!-- Heading -->
-            <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-3 leading-tight">
+            <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4 leading-tight">
                 Our Website is <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Under Construction</span>
             </h1>
             
-            <p class="text-base md:text-lg text-gray-600 mb-5 leading-relaxed">
+            <p class="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
                 We're working hard to bring you an amazing experience. Stay tuned for our launch!
             </p>
 
             <!-- Countdown Timer -->
-            <div class="mb-5 animate-fade-in animate-delay-2">
+            <div class="mb-6 animate-fade-in animate-delay-2">
                 <div class="countdown-box">
                     <h3 class="text-white text-lg font-bold mb-2 text-center">Launching In:</h3>
                     <div class="grid grid-cols-4 gap-2 text-center" id="countdown">
@@ -93,8 +106,8 @@
             </div>
 
             <!-- Contact Information -->
-            <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-4 md:p-5 mb-4">
-                <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4 flex items-center">
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-5 md:p-6 mb-5">
+                <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-5 flex items-center">
                     <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                     </svg>
@@ -124,7 +137,7 @@
                         <div>
                             <h3 class="font-bold text-gray-800 mb-1 text-sm">Contact</h3>
                             <a href="tel:03336508386" class="text-blue-600 hover:text-blue-700 font-semibold transition-colors text-sm hover:underline">
-                                0333 6508386
+                                0333-6508386
                             </a>
                         </div>
                     </div>
