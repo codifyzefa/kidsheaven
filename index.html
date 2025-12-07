@@ -32,6 +32,12 @@
         .animate-delay-1 { animation-delay: 0.2s; opacity: 0; }
         .animate-delay-2 { animation-delay: 0.4s; opacity: 0; }
         .animate-delay-3 { animation-delay: 0.6s; opacity: 0; }
+        .countdown-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen flex items-center justify-center p-6">
@@ -56,6 +62,32 @@
             <p class="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed">
                 We're working hard to bring you an amazing experience. Stay tuned for our launch!
             </p>
+
+            <!-- Countdown Timer -->
+            <div class="mb-10 animate-fade-in">
+                <div class="countdown-box">
+                    <h3 class="text-white text-2xl font-bold mb-4 text-center">Launching In:</h3>
+                    <div class="grid grid-cols-4 gap-4 text-center" id="countdown">
+                        <div class="bg-white bg-opacity-20 rounded-lg p-4 backdrop-blur-sm">
+                            <div class="text-4xl md:text-5xl font-bold text-white" id="days">00</div>
+                            <div class="text-sm md:text-base text-white opacity-90 mt-2">Days</div>
+                        </div>
+                        <div class="bg-white bg-opacity-20 rounded-lg p-4 backdrop-blur-sm">
+                            <div class="text-4xl md:text-5xl font-bold text-white" id="hours">00</div>
+                            <div class="text-sm md:text-base text-white opacity-90 mt-2">Hours</div>
+                        </div>
+                        <div class="bg-white bg-opacity-20 rounded-lg p-4 backdrop-blur-sm">
+                            <div class="text-4xl md:text-5xl font-bold text-white" id="minutes">00</div>
+                            <div class="text-sm md:text-base text-white opacity-90 mt-2">Minutes</div>
+                        </div>
+                        <div class="bg-white bg-opacity-20 rounded-lg p-4 backdrop-blur-sm">
+                            <div class="text-4xl md:text-5xl font-bold text-white" id="seconds">00</div>
+                            <div class="text-sm md:text-base text-white opacity-90 mt-2">Seconds</div>
+                        </div>
+                    </div>
+                    <p class="text-white text-center mt-4 text-sm opacity-90" id="launch-date">Sunday, December 15, 2025 at 7:00 PM</p>
+                </div>
+            </div>
 
             <!-- Divider -->
             <div class="h-1.5 w-28 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-10"></div>
@@ -114,5 +146,38 @@
             <p>&copy; 2024 All Rights Reserved</p>
         </div>
     </div>
+
+    <script>
+        // Set launch date to next Sunday at 7:00 PM
+        const launchDate = new Date('December 15, 2025 19:00:00').getTime();
+        
+        // Store in localStorage
+        localStorage.setItem('launchDate', launchDate);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const storedLaunchDate = localStorage.getItem('launchDate');
+            const distance = storedLaunchDate - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div class="col-span-4 text-white text-3xl font-bold">We Are Live! 🎉</div>';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
 </body>
 </html>
